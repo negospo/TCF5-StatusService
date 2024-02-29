@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-status-deployment
+  labels:
+    app: status
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: status
+  template:
+    metadata:
+      labels:
+        app: status
+    spec:
+      containers:
+        - name: app-status-container
+          image: 807550779778.dkr.ecr.us-east-1.amazonaws.com/fiap-status
+          ports:
+            - containerPort: 80
+          env:
+            - name: POSTGRE_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: app-status-opaque
+                  key: POSTGRE_CONNECTION_STRING
+            - name: ASPNETCORE_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-status-config
+                  key: ASPNETCORE_ENVIRONMENT
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-status-config
+data:
+  ASPNETCORE_ENVIRONMENT: "DEVELOPMENT"
