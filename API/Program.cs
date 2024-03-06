@@ -60,29 +60,11 @@ namespace API
             builder.Services.AddTransient<Application.Interfaces.Repositories.IPedidoRepository, Infrastructure.Persistence.Repositories.Pedido>();
             builder.Services.AddTransient<Application.Interfaces.UseCases.IPedidoUseCase, Application.Implementations.PedidoUseCase>();
 
-
             builder.Services.AddSingleton<IPedidoMessageHandler, PedidoMessageHandler>();
             builder.Services.AddHostedService<Listener>(serviceProvider => {
                 var messageHandler = serviceProvider.GetRequiredService<IPedidoMessageHandler>();
-                return new Listener("localhost", "new-order", messageHandler);
+                return new Listener(Settings.RabbitMQConnectionString, "new-order-status", messageHandler);
             });
-
-            //builder.Services.AddTransient<Application.Interfaces.RabbitMQ.IPedidoMessageHandler, Application.Implementations.PedidoMessageHandler>();
-
-            ////builder.Services.AddSingleton(provider =>
-            ////    new Func<Infrastructure.RabbitMQ.Listener>(() => provider.GetService<Infrastructure.RabbitMQ.Listener>()));
-
-
-
-            //builder.Services.AddSingleton<Infrastructure.RabbitMQ.Listener>((serviceProvider) =>
-            //{
-            //    var messageHandler = serviceProvider.GetRequiredService<Application.Interfaces.RabbitMQ.IPedidoMessageHandler>();
-            //    return new Infrastructure.RabbitMQ.Listener("localhost", "new-order", messageHandler);
-            //});
-
-
-
-            //var rabbitMQService = new Infrastructure.RabbitMQ.Listener("localhost", "new-order", new PedidoMessageHandler(new Application.Implementations.PedidoUseCase()));
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
