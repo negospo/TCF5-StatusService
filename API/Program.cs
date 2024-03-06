@@ -63,7 +63,7 @@ namespace API
             builder.Services.AddSingleton<IPedidoMessageHandler, PedidoMessageHandler>();
             builder.Services.AddHostedService<Listener>(serviceProvider => {
                 var messageHandler = serviceProvider.GetRequiredService<IPedidoMessageHandler>();
-                return new Listener(Settings.RabbitMQConnectionString, "new-order-status", messageHandler);
+                return new Listener(Settings.RabbitMQConnectionString, "order-status", messageHandler);
             });
 
             builder.Services.AddControllers();
