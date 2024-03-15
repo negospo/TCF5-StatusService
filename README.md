@@ -26,6 +26,7 @@ https://drive.google.com/file/d/1Lyvu7fvT9aGAc0ojA-69kTTPG_agpMEs/view?usp=shari
 ### Relatório RIPD
 https://drive.google.com/file/d/1pPCSkVgNZBGcHD-SGRoFrNX9ge3KG9V4/view?usp=sharing
 
+
 ### Como iniciar o serviço 
 
 Antes de inicializar o serviço, deve-se ter certeza de que o [cluster kubernetes no EKS](https://github.com/mvcosta/FIAPTerraformEKS), o [banco de dados RDS deste serviço](https://github.com/mvcosta/FIAPTerraformRDSStatus) e o [serviço orquestrador](https://github.com/negospo/TCF5-PedidoService) foram corretamente inicializados
