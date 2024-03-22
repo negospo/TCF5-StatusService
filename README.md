@@ -16,6 +16,12 @@ Optamos pelo padrão SAGA **orquestrado** em detrimento do coreografado para ger
 
 ![image](https://github.com/negospo/TCF5-PedidoService/assets/39103031/f60e8629-d332-4982-adb1-df2b3be8578f)
 
+### Videos
+#### Parte 1
+https://www.loom.com/share/8b1407c8e50b4a9baa85a31cd9bcffc9?sid=130c2e4c-9996-4b08-b56d-0c3b4c8a1ab5
+#### Parte 2
+https://www.loom.com/share/73a2f8a464c349fea8be6e8472417b68?sid=fa27c1f8-6d08-4ed8-814b-0fa6eca001a6
+
 ### OWASP Reports
 
 #### Antes:
